@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0f0a">
+  <meta name="description" content="Private chat for Sammy and Wafa.">
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="styles.css">
+  <title>W ♡ S</title>
+</head>
+<body>
+  <main class="app-shell">
+    <section id="gate" class="gate-card" aria-labelledby="gate-title">
+      <div class="logo-mark" aria-hidden="true">W ♡ S</div>
+      <p class="names-line">Sammy · وفاء</p>
+      <h1 id="gate-title" class="sr-only">Sammy and Wafa private room</h1>
+      <p class="subtitle">مرحبا · أهلاً وسهلاً<br><span>Enter the password, then choose who you are.</span></p>
+      <form id="gate-form" autocomplete="on">
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" placeholder="Enter password" autocomplete="current-password" required autofocus>
+        <p id="password-error" class="form-error" role="alert" hidden>That password does not match yet.</p>
+        <fieldset class="person-picker">
+          <legend>Who are you? <span>من أنت؟</span></legend>
+          <div class="person-options">
+            <label class="person-option"><input type="radio" name="person" value="Sammy" required><span class="person-card"><b>Sammy</b><small>سامي</small></span></label>
+            <label class="person-option"><input type="radio" name="person" value="Wafa" required><span class="person-card"><b>Wafa</b><small>وفاء</small></span></label>
+          </div>
+        </fieldset>
+        <button class="primary-button" type="submit">CONNECT <span aria-hidden="true">→</span></button>
+      </form>
+      <p class="gate-note">Just for us · not bank-grade security</p>
+    </section>
+
+    <section id="room" class="room" hidden aria-label="Private chat room">
+      <header class="room-header">
+        <div class="brand-lockup">
+          <div class="logo-mark small" aria-hidden="true">W ♡ S</div>
+          <div>
+            <p class="names-line tight">Sammy · وفاء</p>
+            <p id="welcome-line" class="welcome-line"></p>
+          </div>
+        </div>
+        <button id="lock-button" class="icon-button" type="button" title="Lock room" aria-label="Lock room">🔒</button>
+      </header>
+
+      <div class="status-wrap">
+        <div id="connection-status" class="status-pill waiting" role="status">
+          <i class="status-dot" aria-hidden="true"></i>
+          <span id="status-label">Waiting</span>
+        </div>
+        <p id="online-line" class="online-line">Only you so far</p>
+      </div>
+
+      <div id="peer-note" class="peer-note" role="status">Opening the private link…</div>
+
+      <section class="voice-panel" aria-label="Push to talk">
+        <div class="call-copy">
+          <span class="call-icon" aria-hidden="true">🎙️</span>
+          <div>
+            <strong>Push to talk</strong>
+            <small>Hold to speak · clearer than camera</small>
+          </div>
+        </div>
+        <button id="ptt-button" class="ptt-button" type="button" aria-pressed="false">Hold to talk</button>
+        <p id="ptt-note" class="hint-line" hidden></p>
+      </section>
+
+      <section class="call-panel" aria-label="Optional light call">
+        <div class="call-copy">
+          <span class="call-icon" aria-hidden="true">📷</span>
+          <div>
+            <strong>Light camera call</strong>
+            <small>Optional · needs HTTPS on phones</small>
+          </div>
+        </div>
+        <div class="call-actions">
+          <button id="start-call" class="soft-button" type="button">Start camera</button>
+          <button id="hang-up" class="soft-button danger" type="button" hidden>Hang up</button>
+        </div>
+        <p id="camera-note" class="hint-line">Tip: phone camera needs HTTPS (GitHub Pages). LAN http://192.x often blocks camera.</p>
+        <p id="media-error" class="hint-line media-error" hidden></p>
+        <div id="video-grid" class="video-grid" hidden>
+          <video id="local-video" autoplay muted playsinline></video>
+          <video id="remote-video" autoplay playsinline></video>
+        </div>
+      </section>
+
+      <section id="messages" class="messages" aria-live="polite" aria-label="Messages"></section>
+
+      <section class="quick-gifts" aria-label="Quick gifts">
+        <div class="section-label"><span>gifts</span><span>هدايا صغيرة</span></div>
+        <div class="gift-row">
+          <button class="gift-button" type="button" data-gift="heart"><span>❤️</span><small>Heart</small></button>
+          <button class="gift-button" type="button" data-gift="flower"><span>🌸</span><small>Flower</small></button>
+          <button class="gift-button" type="button" data-gift="coffee"><span>☕</span><small>Coffee</small></button>
+          <button class="gift-button" type="button" data-gift="miss you"><span>💌</span><small>Miss you</small></button>
+          <button class="gift-button" type="button" data-gift="good night"><span>🌙</span><small>Good night</small></button>
+          <button class="gift-button" type="button" data-gift="thinking of you"><span>💭</span><small>Thinking</small></button>
+          <button class="gift-button" type="button" data-gift="hug"><span>🤗</span><small>Hug</small></button>
+        </div>
+        <div class="emoji-row" aria-label="Emoji shortcuts">
+          <button type="button" class="emoji-button" data-emoji="😊">😊</button>
+          <button type="button" class="emoji-button" data-emoji="❤️">❤️</button>
+          <button type="button" class="emoji-button" data-emoji="😘">😘</button>
+          <button type="button" class="emoji-button" data-emoji="🌷">🌷</button>
+          <button type="button" class="emoji-button" data-emoji="✨">✨</button>
+          <button type="button" class="emoji-button" data-emoji="🤍">🤍</button>
+        </div>
+      </section>
+
+      <form id="composer" class="composer" autocomplete="off">
+        <label class="sr-only" for="message-input">Write a message</label>
+        <input id="message-input" type="text" maxlength="500" placeholder="> message_  | اكتب" enterkeyhint="send">
+        <button class="send-button" type="submit" aria-label="Send message">Send <span aria-hidden="true">➤</span></button>
+      </form>
+      <footer class="room-footer"><span>Private · PeerJS</span><span id="last-ping">Heartbeat ready</span></footer>
+    </section>
+  </main>
+  <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

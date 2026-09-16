@@ -1,0 +1,10 @@
+{
+  "name": "W ♡ S",
+  "short_name": "W♡S",
+  "description": "Private room for Sammy and Wafa",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#070b07",
+  "theme_color": "#0a0f0a",
+  "lang": "en"
+}
